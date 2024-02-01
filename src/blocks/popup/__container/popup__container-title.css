@@ -1,0 +1,9 @@
+.popup__container-title {
+  margin: 0 auto;
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  position: absolute;
+  bottom: -25px;
+}

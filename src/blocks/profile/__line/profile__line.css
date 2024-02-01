@@ -1,0 +1,4 @@
+.profile__line {
+  display: flex;
+  max-width: 336px;
+}

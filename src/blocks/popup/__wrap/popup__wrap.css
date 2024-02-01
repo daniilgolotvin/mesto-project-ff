@@ -1,0 +1,13 @@
+.popup__wrap {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  margin: auto;
+  position: relative;
+}
+@media screen and (max-width: 540px) {
+  .popup__wrap {
+    max-width: 282px;
+  }
+}

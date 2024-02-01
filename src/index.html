@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+  <title>MESTO</title>
+</head>
+
+<body class="page hidden">
+  <header class="header">
+    <img src="<%=require('../src/images/logo.svg')%>" alt="Логотип
+      со словами Место и Россия на английском" class="header__logo">
+  </header>
+  <main class="main">
+    <section class="profile">
+      <div class="profile__content">
+        <img src="<%=require('../src/images/image.jpg')%>" alt="Путешественник" class="profile__image" />
+        <div class="profile__info">
+          <div class="profile__line">
+            <h1 id="profile-name" class="profile__line-name">Жак-Ив Кусто</h1>
+            <button id="open-popup" class="profile__line-button" aria-label=" Открытие профиля" type="button"></button>
+          </div>
+          <p id="profile-description" class="profile__info-description">
+            Исследователь океана
+          </p>
+        </div>
+      </div>
+      <button class="profile__add-button" aria-label="Добаваление новой фотографии" type="button"
+        id="button-add"></button>
+    </section>
+    <section class="elements">
+      <template class="elements__template">
+        <article class="element">
+          <div class="element__card">
+            <img src="#" alt="" class="element__card-image" />
+            <button class="element__card-trashbutton" type="button" aria-label="Удалить карточку"></button>
+          </div>
+          <div class="element__group">
+            <h2 class="element__group-title"></h2>
+            <button class="element__group-button" type="button" aria-label="Добавить в избранное"></button>
+          </div>
+        </article>
+      </template>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__info">© 2023 Даниил Голотвин</p>
+  </footer>
+  <div class="popup profile-popup" id="popup">
+    <div class="popup__wrap">
+      <button id="close-popup" class="popup__close-button" aria-label="Кнопка закрытия " type="button"></button>
+      <form action="#" class="popup__form" name="popup-info">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <fieldset class="popup__fieldset">
+          <input class="popup__name" id="user-name" type="text" name="name" placeholder="Имя" minlength="2"
+            maxlength="40" required />
+          <span class="popup__input-error popup__input-error_type_user-name"></span>
+          <input class="popup__name" id="user-post" type="text" name="about" placeholder="Чем занимаешься?"
+            minlength="2" maxlength="200" required />
+          <span class="popup__input-error popup__input-error_type_user-post"></span>
+          <button id="editSubmitButton" class="popup__save-button popup__save-button_inactive" type="submit"
+            aria-label="Кнопка сохранения">
+            Сохранить
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="popup add-popup">
+    <div class="popup__wrap">
+      <button id="close-addPopup" class="popup__close-button" aria-label="Кнопка закрытия " type="button"></button>
+      <form action="#" class="popup__form" name="popup__add-info">
+        <h2 class="popup__title">Новое место</h2>
+        <fieldset class="popup__fieldset">
+          <input class="popup__name add-name" type="text" name="title" id="inputNameСard" placeholder="Название"
+            minlength="2" maxlength="30" required />
+          <span class="popup__input-error popup__input-error_type_inputNameСard"></span>
+          <input class="popup__name add-link" type="url" pattern="https://.*" name="link" id="inputLinkСard"
+            placeholder="Ссылка на картинку" required />
+          <span class="popup__input-error popup__input-error_type_inputLinkСard"></span>
+          <button id="add-save" class="popup__save-button popup__save-button_inactive" aria-label="Кнопка сохранения"
+            type="submit">
+            Летс гоу!
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <section class="popup popup-image popup-opacity">
+    <div class="popup__wrap">
+      <button id="close-popupImage" class="popup__close-button" aria-label="Кнопка закрытия" type="button"></button>
+      <div class="popup__container">
+        <img src="#" class="popup__container-image" alt="" />
+        <h3 class="popup__container-title" aria-label="Заголовок фотографии"></h3>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

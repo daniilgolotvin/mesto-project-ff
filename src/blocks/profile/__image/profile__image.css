@@ -1,0 +1,11 @@
+.profile__image {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+@media (max-width: 710px) {
+  .profile__image {
+    margin-bottom: 26px;
+  }
+}
