@@ -12,14 +12,20 @@ export function closePopup(popup) {
 }
 
 // Функция обработки нажатия клавиши Esc
-export const closePopupByEsc = (evt, popup) => {
+export function closePopupByEsc(evt) {
   if (evt.key === 'Escape') {
-    closePopup(popup);
+    const openedPopup = document.querySelector('.popup_open');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
   }
-};
+}
 
-export const closePopupByOverlayClick = (evt, popup) => {
+export function closePopupByOverlayClick(evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(popup);
+    const openedPopup = document.querySelector('.popup_open');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
   }
-};
+}

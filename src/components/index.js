@@ -1,6 +1,6 @@
 import '../pages/index.css';
 import { closePopup, openPopup, closePopupByOverlayClick, closePopupByEsc } from './modal.js';
-import { handleAddFormSubmit, handleImageClick, likeButtonActive, deleteCard } from './card.js';
+import { createPlace, likeButtonActive, deleteCard } from './card.js';
 import { initialCards } from './cards.js';
 
 // Объявление переменных для работы с элементами страницы
@@ -21,33 +21,43 @@ const popupImageImg = popupImage.querySelector('.popup__container-image');
 const addName = document.querySelector('.add-name');
 const addLink = document.querySelector('.add-link');
 const addPopup = document.querySelector('.add-popup');
-export { popupImage, popupImageTitle, popupImageImg, addName, addLink, addPopup };
-
-export function createPlace(element) {
-  //функция создания карточкиъ
-  const templateElementCopy = templateElement.cloneNode(true);
-  const templateImage = templateElementCopy.querySelector('.element__card-image');
-  const templateTitle = templateElementCopy.querySelector('.element__group-title');
-  const likeButton = templateElementCopy.querySelector('.element__group-button');
-  const trashButton = templateElementCopy.querySelector('.element__card-trashbutton');
-  templateImage.setAttribute('src', element.link);
-  templateImage.setAttribute('alt', element.name);
-  templateTitle.textContent = element.name;
-
-  // Добавляем обработчики событий для кнопок 'Лайк' и 'Удалить'
-  likeButton.addEventListener('click', likeButtonActive);
-  trashButton.addEventListener('click', deleteCard);
-
-  // Добавляем обработчик события клика на изображение карточки
-  templateImage.addEventListener('click', handleImageClick);
-  return templateElementCopy;
-}
+export {
+  templateElement,
+  templateElements,
+  popupImage,
+  popupImageTitle,
+  popupImageImg,
+  addName,
+  addLink,
+  addPopup
+};
 
 // Функция для добавления карточки на страницу
-export function addCard(item) {
-  const element = createPlace(item);
+export function addCard(item, deleteCard, likeButtonActive, handleImageClick) {
+  const element = createPlace(item, deleteCard, likeButtonActive, handleImageClick);
   templateElements.prepend(element);
 }
+
+//функция для открытия большого изображения карточки
+export function handleImageClick(evt) {
+  openPopup(popupImage);
+  popupImageImg.src = evt.target.getAttribute('src');
+  popupImageImg.alt = evt.target.getAttribute('alt');
+  popupImageTitle.textContent = popupImageImg.alt;
+}
+
+// Функция для создания новой карточки и добавления её на страницу
+export function handleAddFormSubmit(evt) {
+  evt.preventDefault();
+  const newCard = {
+    name: addName.value.trim(),
+    link: addLink.value
+  };
+  addCard(newCard);
+  closePopup(addPopup);
+  evt.target.reset();
+}
+
 // Функция для создания карточки из шаблона
 
 initialCards.forEach(card => addCard(card));
@@ -76,19 +86,11 @@ profilePopupForm.addEventListener('submit', handleProfileFormSubmit);
 
 // Добавляем обработчик для закрытия попапа при клике на overlay
 document.querySelectorAll('.popup').forEach(popup => {
-  popup.addEventListener('click', evt => {
-    if (evt.target === popup) {
-      closePopupByOverlayClick(evt, popup);
-    }
-  });
+  popup.addEventListener('click', closePopupByOverlayClick);
 });
+
 // Добавляем обработчик для закрытия попапа при нажатии на Esc
-document.addEventListener('keydown', evt => {
-  const openedPopup = document.querySelector('.popup_open');
-  if (openedPopup) {
-    closePopupByEsc(evt, openedPopup);
-  }
-});
+document.addEventListener('keydown', closePopupByEsc);
 
 // Обработчик события клика на кнопку 'Добавить' (открывает попап для добавления карточки)
 addButton.addEventListener('click', function () {

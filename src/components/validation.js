@@ -4,9 +4,7 @@ export const showInputError = (
   inputElement,
   { inputErrorType, inputErrorTypeClass, errorClassActive }
 ) => {
-  const errorElement = formElement.querySelector(
-    `${inputErrorType}${inputElement.id}`
-  );
+  const errorElement = formElement.querySelector(`${inputErrorType}${inputElement.id}`);
   inputElement.classList.add(inputErrorTypeClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(errorClassActive);
@@ -18,12 +16,10 @@ export const hideInputError = (
   inputElement,
   { inputErrorType, inputErrorTypeClass, errorClassActive }
 ) => {
-  const errorElement = formElement.querySelector(
-    `${inputErrorType}${inputElement.id}`
-  );
+  const errorElement = formElement.querySelector(`${inputErrorType}${inputElement.id}`);
   inputElement.classList.remove(inputErrorTypeClass);
   errorElement.classList.remove(errorClassActive);
-  errorElement.textContent = "";
+  errorElement.textContent = '';
 };
 
 // Функция для проверки валидности введенных данных в поле ввода
@@ -36,22 +32,20 @@ export const checkInputValidity = (formElement, inputElement, config) => {
 };
 
 export const setEventListeners = (formElement, config) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(config.inputSelector)
-  );
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
   // При открытии попапа формы редактирования профиля проверяем наличие невалидных полей
   toggleButtonState(inputList, buttonElement, config.inactiveButtonClass);
 
   // Добавляем обработчик события "reset" для формы
-  formElement.addEventListener("reset", () => {
+  formElement.addEventListener('reset', () => {
     disableButton(buttonElement, config.inactiveButtonClass);
   });
 
   // Добавляем обработчики события "input" для всех полей ввода
-  inputList.forEach((input) => {
-    input.addEventListener("input", () => {
+  inputList.forEach(input => {
+    input.addEventListener('input', () => {
       checkInputValidity(formElement, input, config);
 
       toggleButtonState(inputList, buttonElement, config.inactiveButtonClass);
@@ -60,13 +54,13 @@ export const setEventListeners = (formElement, config) => {
 };
 
 // Функция для включения валидации для всех указанных форм на странице
-export const enableValidation = (config) => {
+export const enableValidation = config => {
   const forms = document.forms;
   const formList = Array.from(forms);
 
-  formList.forEach((formElement) => {
+  formList.forEach(formElement => {
     // Отменяем стандартное поведение формы при отправке и добавляем обработчики событий
-    formElement.addEventListener("submit", function (evt) {
+    formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
     setEventListeners(formElement, config);
@@ -75,7 +69,7 @@ export const enableValidation = (config) => {
 
 // Функция для проверки наличия невалидных полей в списке
 export function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
+  return inputList.some(inputElement => {
     return !inputElement.validity.valid;
   });
 }
@@ -93,11 +87,7 @@ export function enableButton(buttonElement, inactiveButtonClass) {
 }
 
 // Функция для переключения состояния кнопки в зависимости от валидности полей ввода
-export function toggleButtonState(
-  inputList,
-  buttonElement,
-  inactiveButtonClass
-) {
+export function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   disableButton(buttonElement, inactiveButtonClass);
   if (hasInvalidInput(inputList)) {
     disableButton(buttonElement, inactiveButtonClass);
@@ -108,12 +98,12 @@ export function toggleButtonState(
 
 // Включаем валидацию для форм на странице с помощью конфигурации
 enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__name",
-  submitButtonSelector: ".popup__save-button",
-  inactiveButtonClass: "popup__save-button_inactive",
-  inputErrorTypeClass: ".popup__name_type_error",
-  errorClassActive: "popup__input-error_active",
-  inputErrorType: ".popup__input-error_type_",
-  fieldsetList: ".popup__fieldset",
+  formSelector: '.popup__form',
+  inputSelector: '.popup__name',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorTypeClass: '.popup__name_type_error',
+  errorClassActive: 'popup__input-error_active',
+  inputErrorType: '.popup__input-error_type_',
+  fieldsetList: '.popup__fieldset'
 });
