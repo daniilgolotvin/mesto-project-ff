@@ -1,0 +1,32 @@
+.profile__plus {
+    min-width: 150px;
+    min-height: 50px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: 2px solid #FFF;
+    border-radius: 2px;
+    background-image: url(../../../images/Vector2.svg);
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity .3s;
+}
+
+.profile__plus:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 930px) {
+    .profile__plus {
+        margin: 33px auto 0;
+        min-width: 282px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__plus {
+        background-size: 16px 16px;
+    }
+}

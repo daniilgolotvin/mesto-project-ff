@@ -1,4 +1,0 @@
-.popup_open {
-  visibility: visible; /* Плавно меняем видимость до visible */
-  opacity: 1; /* Плавно меняем прозрачность до 1 */
-}

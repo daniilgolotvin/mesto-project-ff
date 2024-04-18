@@ -1,17 +1,17 @@
 .footer {
-  max-width: 880px;
-  margin: 67px auto 60px;
+    max-width: 880px;
+    margin: 0 auto 60px;
 }
 
-@media (max-width: 930px) {
-  .footer {
-    margin-left: 19px;
-  }
+@media screen and (max-width: 1024px) {
+    .footer {
+        max-width: calc(100% - 30.22%);
+    }
 }
 
-@media (max-width: 640px) {
-  .footer {
-    margin-top: 48px;
-    margin-bottom: 36px;
-  }
+@media screen and (max-width: 832px) {
+    .footer {
+        max-width: 282px;
+        margin-bottom: 33px;
+    }
 }

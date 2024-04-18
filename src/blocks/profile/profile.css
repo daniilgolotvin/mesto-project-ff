@@ -1,20 +1,15 @@
 .profile {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: #fff;
+    max-width: calc(100% - 31.25%);
+    display: flex;
+    align-items: center;
+    margin: 40px auto 0;
 }
 
-@media (max-width: 950px) {
-  .profile {
-    margin: 40px 30px;
-  }
-}
 
-@media (max-width: 710px) {
-  .profile {
-    flex-direction: column;
-    margin: 42px 0 0;
-  }
+@media screen and (max-width: 930px) {
+    .profile {
+        max-width: calc(100% - 11.88%);
+        flex-direction: column;
+        margin-top: 42px;
+    }
 }

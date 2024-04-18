@@ -1,31 +1,39 @@
-// Функция для открытия попапа
+let openedPopup = null;
 
 export function openPopup(popup) {
-  popup.classList.add('popup_open');
-  document.addEventListener('keydown', closePopupByEsc);
-}
-
-// Функция для закрытия попапа
-export function closePopup(popup) {
-  popup.classList.remove('popup_open');
-  document.removeEventListener('keydown', closePopupByEsc);
-}
-
-// Функция обработки нажатия клавиши Esc
-export function closePopupByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_open');
-    if (openedPopup) {
-      closePopup(openedPopup);
-    }
+  if (openedPopup) {
+    closePopup(openedPopup);
   }
+
+  popup.classList.add("popup_opened");
+  addCloseListeners(popup);
+  openedPopup = popup;
 }
 
-export function closePopupByOverlayClick(evt) {
-  if (evt.target === evt.currentTarget) {
-    const openedPopup = document.querySelector('.popup_open');
-    if (openedPopup) {
-      closePopup(openedPopup);
-    }
+function removeCloseListeners(popup) {
+  const closeButtons = popup.querySelectorAll(".popup__close");
+  closeButtons.forEach((button) => {
+    button.removeEventListener("click", closePopup);
+  });
+  popup.removeEventListener('mousedown', closePopupClickOverlay);
+}
+
+function addCloseListeners(popup) {
+  const closeButtons = popup.querySelectorAll(".popup__close");
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => closePopup(popup));
+  });
+  popup.addEventListener('mousedown', closePopupClickOverlay);
+}
+
+export function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  removeCloseListeners(popup);
+  openedPopup = null;
+}
+
+export function closePopupClickOverlay(evt) {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup(evt.target);
   }
 }

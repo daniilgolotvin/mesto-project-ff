@@ -1,12 +1,36 @@
 .header__logo {
-  max-width: 142px;
-  padding-bottom: 41px;
+    width: 142px;
+    height: 33px;
+    background-image: url(../../../images/logo.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-@media (max-width: 940px) {
-  .header__logo {
-    padding-bottom: 31.6px;
-    max-width: 103.74px;
-    margin-left: 27px;
-  }
+
+@media screen and (max-width: 1024px) {
+    .header__logo {
+        max-width: 132.44px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header__logo {
+        max-width: 122.87px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .header__logo {
+        max-width: 113.31px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__logo {
+        max-width: 103.74px;
+        margin-left: 27px;
+    }
 }

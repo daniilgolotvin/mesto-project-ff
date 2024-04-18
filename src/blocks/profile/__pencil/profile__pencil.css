@@ -1,0 +1,28 @@
+.profile__pencil {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../../images/Vector.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 1px solid #FFF;
+    margin-top: 7px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profile__pencil:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+    .profile__pencil {
+        width: 18px;
+        height: 18px;
+        background-size: 7.5px 7.5px;
+        margin-top: 0;
+        transition: opacity .3s;
+
+    }
+}

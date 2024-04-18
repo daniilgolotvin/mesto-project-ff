@@ -1,0 +1,6 @@
+.popup__save_type_invalid {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.15);
+    background-color: #F6F6F6;
+}
+
