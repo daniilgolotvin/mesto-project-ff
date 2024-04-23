@@ -170,7 +170,6 @@ function handleFormSubmitNewCard(evt) {
 popupProfileCloseButton.forEach(button => {
   const popup = button.closest('.popup');
   popup.addEventListener('click', closePopupClickOverlay);
-  button.addEventListener('click', () => closePopup(popup));
 });
 
 profileForm.addEventListener('submit', handleFormSubmitEdit);
@@ -191,3 +190,4 @@ Promise.all([getInitialCards(), getUserInfo()])
   });
 
 enableValidation(config);
+

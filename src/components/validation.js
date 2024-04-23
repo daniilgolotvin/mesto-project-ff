@@ -9,14 +9,18 @@ function hideError(inputElement, errorElement, config) {
 }
 
 function checkInputValidity(inputElement, formElement, config) {
-    const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-    if (isInputValid) {
-        hideError(inputElement, errorElement, config);
+    if (inputElement.validity.valid) {
+      hideError(inputElement, errorElement, config);
     } else {
-        showError(inputElement, errorElement, config);
+      showError(inputElement, errorElement, config);
+      if (inputElement.validity.patternMismatch) {
+        inputElement.setCustomValidity(config.patternMismatchError);
+      } else {
+        inputElement.setCustomValidity('');
+      }
     }
-}
+  }
 
 function toggleButtonState(buttonElement, isActive, config) {
     if (buttonElement) {
